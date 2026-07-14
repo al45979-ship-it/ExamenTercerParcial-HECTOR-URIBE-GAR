@@ -8,7 +8,7 @@ var powerBar = document.getElementById('powerBar');
 // --- 1. DEFINICIÓN DE IMÁGENES ---
 // MAPA DE IMÁGENES DE EJEMPLO
 var characterImages = {
-    mario': 'imagenes/,Mario.jpg',
+    'mario': 'imagenes/Mario.jpg',
     'bowser': 'imagenes/Bowser.jpg',
     'toad': 'imagenes/Toad.jpg',
     'peach': 'imagenes/Peach.jpg',
@@ -34,6 +34,41 @@ function updateInterface() {
     // Obtenemos el poder base usando el atributo 'data-base' que añadimos al HTML
     var selectedOption = characterSelect.options[characterSelect.selectedIndex];
     var characterBase = parseInt(selectedOption.getAttribute('data-base'));
+
+    // Neumáticos: puede ser positivo o negativo (Acero -10, Ligeros +30, Robustos -20, etc.)
+    var tireValue = 0;
+    var selectedRadio = document.querySelector('input[name="tires"]:checked');
+    if (selectedRadio) tireValue = parseInt(selectedRadio.value);
+
+    // Mejoras: suma todos los checkboxes marcados, respetando valores negativos
+    // (Estrella +50, Bananas -15, Bill Bala -25, Caparazón Bowser -10, etc.)
+    var upgradesValue = 0;
+    var checkboxes = document.querySelectorAll('input[name="upgrades"]:checked');
+    checkboxes.forEach(function(cb) {
+        upgradesValue += parseInt(cb.value);
+    });
+
+    // Nivel de motor: validado ahora en el rango 1-9
+    var driverLevel = parseInt(document.getElementById('driverLevel').value);
+    if (isNaN(driverLevel) || driverLevel < 1) driverLevel = 1;
+    if (driverLevel > 9) driverLevel = 9;
+
+    // FÓRMULA
+    var total = (characterBase + tireValue + upgradesValue) * driverLevel;
+    if (total < 0) total = 0;
+
+    // --- C. Renderizar Resultados ---
+    totalPowerDisplay.textContent = total;
+
+    var percentage = (total / 500) * 100;
+    if (percentage > 100) percentage = 100;
+    powerBar.style.width = percentage + '%';
+}
+
+// Escuchar cambios en todo el formulario
+form.addEventListener('input', updateInterface);
+// Inicializar la interfaz al cargar
+updateInterface();
 
     // Neumáticos: puede ser positivo o negativo (Acero -10, Ligeros +30, Robustos -20, etc.)
     var tireValue = 0;
