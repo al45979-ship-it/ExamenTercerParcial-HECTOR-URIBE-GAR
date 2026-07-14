@@ -1,0 +1,165 @@
+        /* CSS3: Estilos actualizados */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #333); /* Fondo más oscuro para contraste */
+            background: #000000 url(imagenes/mario-kart-world.jpg) no-repeat scroll center;
+
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            padding: 30px;
+            max-width: 800px; /* Un poco más ancho */
+            width: 100%;
+            border: 5px solid #fbd000;
+            display: grid; /* Usamos Grid para organizar */
+            grid-template-columns: 1fr 1fr; /* Dos columnas: Controles | Imagen y Resultado */
+            gap: 30px;
+        }
+
+        h1 {
+            grid-column: 1 / -1; /* Título ocupa todo el ancho */
+            text-align: center;
+            color: #e52521;
+            text-shadow: 2px 2px #fbd000;
+            margin-top: 0;
+            font-size: 2.5em;
+        }
+
+        /* Columna Izquierda: Controles */
+        .controls-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #0055ff;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus, input[type="number"]:focus {
+            border-color: #e52521;
+            outline: none;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .option-label input {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+
+        /* Columna Derecha: Imagen y Marcador */
+        .display-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Alineación arriba */
+            gap: 20px;
+        }
+
+        /* Contenedor de la Imagen */
+        .character-display {
+            width: 100%;
+            height: 300px; /* Altura fija para consistencia */
+            background-color: #eee;
+            border-radius: 15px;
+            border: 4px solid #0055ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Corta si la imagen es muy grande */
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        #characterImage {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* Mantiene proporción sin deformar */
+            display: block; /* Evita espacios extraños */
+            transition: opacity 0.3s ease; /* Efecto suave al cambiar */
+        }
+
+        .score-board {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            border: 3px solid #43b047;
+        }
+
+        .score-title {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #aaa;
+        }
+
+        .score-value {
+            font-size: 54px;
+            font-weight: bold;
+            color: #fbd000;
+            margin: 5px 0;
+            font-family: 'Courier New', Courier, monospace; /* Toque retro */
+        }
+
+        .progress-bar-container {
+            background-color: #444;
+            border-radius: 10px;
+            height: 25px;
+            width: 100%;
+            overflow: hidden;
+            border: 2px solid #000;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #43b047, #fbd000, #e52521);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease-out;
+        }
+
+        /* Responsive simple */
+        @media (max-width: 700px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .character-display {
+                height: 200px;
+            }
+        }
