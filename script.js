@@ -8,12 +8,12 @@ var powerBar = document.getElementById('powerBar');
 // --- 1. DEFINICIÓN DE IMÁGENES ---
 // MAPA DE IMÁGENES DE EJEMPLO
 var characterImages = {
-    'mario': 'mario.jpg',
-    'bowser': 'bowser.jpg',
-    'toad': 'toad.jpg',
-    'peach': 'peach.jpg',
-    'yoshi': 'yoshi.jpg',
-    'luigi': 'luigi.jpg',
+    'mario': 'Mario.jpg',
+    'bowser': 'Bowser.jpg',
+    'toad': 'Toad.jpg',
+    'peach': 'Peach.jpg',
+    'yoshi': 'Yoshi.jpg',
+    'luigi': 'Luigi.jpg',
 };
 
 function updateInterface() {
